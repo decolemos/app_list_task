@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:list_tasks/configs/app_routes.dart';
-import 'package:list_tasks/pages/form_task.dart';
 import 'package:list_tasks/providers/task_controller.dart';
 import 'package:provider/provider.dart';
 
@@ -38,13 +37,25 @@ class _HomePageState extends State<HomePage> {
       ListView.builder(
         itemCount: provider.tasks.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            leading: Image.asset('assets/logoMalwee.png'),
-            title: Text(
-              provider.tasks[index].number.toString()
-            ),
-            subtitle: Text(
-              provider.tasks[index].name.toString()
+          return Card(
+            child: ListTile(
+              onTap: () {
+                
+              },
+              leading: Image.asset('assets/logoMalwee.png'),
+              trailing: IconButton(
+                onPressed: () {
+                  
+                }, 
+                icon: const Icon(Icons.edit)
+              ),
+              
+              title: Text(
+                "Numero do chamado: ${provider.tasks[index].number.toString()}"
+              ),
+              subtitle: Text(
+                "Titulo do chamado: ${provider.tasks[index].name.toString()}"
+              ),
             ),
           );
         },

@@ -26,6 +26,7 @@ class TaskController extends ChangeNotifier {
         applicant: applicant
       )
     );
+    notifyListeners();
   }
 
   //READ = Criando uma função para percorrer toda a lista
