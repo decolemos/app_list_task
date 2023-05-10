@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:list_tasks/configs/app_routes.dart';
+import 'package:list_tasks/pages/edit_task.dart';
+import 'package:list_tasks/pages/task_detail.dart';
 import 'package:list_tasks/providers/task_controller.dart';
 import 'package:provider/provider.dart';
 
@@ -40,14 +42,12 @@ class _HomePageState extends State<HomePage> {
           return Card(
             child: ListTile(
               onTap: () {
-                Navigator.of(context).pushNamed(
-                  AppRoutes.TASK_DETAIL,
-                );
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => TaskDetail(task: provider.tasks[index],),));
               },
               leading: Image.asset('assets/logoMalwee.png'),
               trailing: IconButton(
                 onPressed: () {
-                  
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => EditTask(task: provider.tasks[index],),));
                 }, 
                 icon: const Icon(Icons.edit)
               ),
@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                 "Numero do chamado: ${provider.tasks[index].number.toString()}"
               ),
               subtitle: Text(
-                "Titulo do chamado: ${provider.tasks[index].name.toString()}"
+                "Titulo do chamado: ${provider.tasks[index].name}"
               ),
             ),
           );

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:list_tasks/pages/form_task.dart';
 import 'package:list_tasks/pages/home.dart';
-import 'package:list_tasks/pages/task_detail.dart';
 import 'package:list_tasks/providers/task_controller.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +18,6 @@ class MyApp extends StatelessWidget {
         routes: {
           AppRoutes.HOMEPAGE:(_) => const HomePage(),
           AppRoutes.FORM_TASK:(_) => const FormTask(),
-          AppRoutes.TASK_DETAIL:(_) => const TaskDetail()
         },
         debugShowCheckedModeBanner: false,
       )

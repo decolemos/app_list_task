@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import '../models/task.dart';
 
@@ -19,6 +20,7 @@ class TaskController extends ChangeNotifier {
     _list.add(
       //acessando a classe Task que foi criada em models
       Task(
+        id: math.Random().nextInt(100000).toString(),
         number: number, 
         name: name, 
         description: description, 
