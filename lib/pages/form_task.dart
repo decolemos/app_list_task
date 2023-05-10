@@ -42,6 +42,7 @@ class _FormTaskState extends State<FormTask> {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('Adicionado com sucesso'))
                 );
+                Navigator.of(context).pop();
               } 
             }, 
             icon: const Icon(Icons.save))

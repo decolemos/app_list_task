@@ -40,7 +40,9 @@ class _HomePageState extends State<HomePage> {
           return Card(
             child: ListTile(
               onTap: () {
-                
+                Navigator.of(context).pushNamed(
+                  AppRoutes.TASK_DETAIL,
+                );
               },
               leading: Image.asset('assets/logoMalwee.png'),
               trailing: IconButton(

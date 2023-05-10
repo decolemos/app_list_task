@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:list_tasks/pages/form_task.dart';
 import 'package:list_tasks/pages/home.dart';
+import 'package:list_tasks/pages/task_detail.dart';
 import 'package:list_tasks/providers/task_controller.dart';
 import 'package:provider/provider.dart';
 
@@ -8,6 +9,7 @@ import 'app_routes.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+  
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         routes: {
           AppRoutes.HOMEPAGE:(_) => const HomePage(),
-          AppRoutes.FORM_TASK:(_) => const FormTask()
+          AppRoutes.FORM_TASK:(_) => const FormTask(),
+          AppRoutes.TASK_DETAIL:(_) => const TaskDetail()
         },
         debugShowCheckedModeBanner: false,
       )
