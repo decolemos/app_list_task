@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:list_tasks/providers/task_controller.dart';
-import 'package:provider/provider.dart';
 import '../models/task.dart';
 import 'edit_task.dart';
 
@@ -31,8 +29,68 @@ class _TaskDetailState extends State<TaskDetail> {
           )
         ],
       ),
-      body: Center(
-        child: Text(widget.task.number.toString()),
+      body: Padding(padding: const EdgeInsets.all(5),
+        child: ListTile(
+          title: Column(
+            children: [
+              Card(
+                elevation: 5,
+                child: SizedBox(
+                  height: 50,
+                  child: Center(
+                    child: Text(
+                      'Numero do chamado: ${widget.task.number.toString()}'
+                    )
+                  ),
+                ),
+              ),
+              Card(
+                elevation: 5,
+                child: SizedBox(
+                  height: 50,
+                  child: Center(
+                    child: Text(
+                      'Titulo do chamado: ${widget.task.name}'
+                    )
+                  ),
+                ),
+              ),
+              Card(
+                elevation: 5,
+                child: SizedBox(
+                  height: 50,
+                  child: Center(
+                    child: Text(
+                      'Descrição do chamado: ${widget.task.description}'
+                    )
+                  ),
+                ),
+              ),
+              Card(
+                elevation: 5,
+                child: SizedBox(
+                  height: 50,
+                  child: Center(
+                    child: Text(
+                      'Setor do chamado: ${widget.task.sector}'
+                    )
+                  ),
+                ),
+              ),
+              Card(
+                elevation: 5,
+                child: SizedBox(
+                  height: 50,
+                  child: Center(
+                    child: Text(
+                      'Requerente do chamado: ${widget.task.applicant}'
+                    )
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       )
     );
   }

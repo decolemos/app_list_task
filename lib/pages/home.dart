@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:list_tasks/configs/app_routes.dart';
+import 'package:list_tasks/models/task.dart';
 import 'package:list_tasks/pages/edit_task.dart';
 import 'package:list_tasks/pages/task_detail.dart';
 import 'package:list_tasks/providers/task_controller.dart';
@@ -13,6 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
   @override
   Widget build(BuildContext context) {
 
@@ -45,13 +47,26 @@ class _HomePageState extends State<HomePage> {
                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => TaskDetail(task: provider.tasks[index],),));
               },
               leading: Image.asset('assets/logoMalwee.png'),
-              trailing: IconButton(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => EditTask(task: provider.tasks[index],),));
-                }, 
-                icon: const Icon(Icons.edit)
+              trailing: SizedBox(
+                width: 80,
+                child: Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => EditTask(task: provider.tasks[index],),));
+                      }, 
+                      icon: const Icon(Icons.edit)
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        provider.delete(provider.tasks[index].id as Task);
+                        // Provider.of<TaskController>(context, listen: false).delete(widget.task);
+                      }, 
+                      icon: const Icon(Icons.delete)
+                    ),
+                  ],
+                ),
               ),
-              
               title: Text(
                 "Numero do chamado: ${provider.tasks[index].number.toString()}"
               ),

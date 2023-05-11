@@ -14,8 +14,6 @@ class EditTask extends StatefulWidget {
 
 class _EditTaskState extends State<EditTask> {
 
-  // late dynamic task;
-
   final _formKey = GlobalKey<FormState>();
  
   final _numberController = TextEditingController();
@@ -28,6 +26,10 @@ class _EditTaskState extends State<EditTask> {
   void initState() {
     super.initState();
     _numberController.text = widget.task.number.toString();
+    _nameController.text = widget.task.name.toString();
+    _descriptionController.text = widget.task.description.toString();
+    _sectorController.text = widget.task.sector.toString();
+    _applicantController.text = widget.task.applicant.toString();
   }
 
   @override
@@ -39,14 +41,6 @@ class _EditTaskState extends State<EditTask> {
       appBar: AppBar(
         title: const Text('Detalhes do chamado'),
         centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {
-              
-            }, 
-            icon: const Icon(Icons.edit)
-          )
-        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -75,17 +69,20 @@ class _EditTaskState extends State<EditTask> {
                 controller: _applicantController,
               ),
               ElevatedButton(
-                onPressed: () => provider.update(
-                  Task(
-                    id: widget.task.id, 
-                    number: int.parse(_numberController.text), 
-                    name: _nameController.text, 
-                    description: _descriptionController.text, 
-                    sector: _sectorController.text, 
-                    applicant: _applicantController.text
-                    )
-                  ), 
-                child: const Text('Comfirmar')
+                onPressed: () {
+                  provider.update(
+                    Task(
+                      id: widget.task.id, 
+                      number: int.parse(_numberController.text), 
+                      name: _nameController.text, 
+                      description: _descriptionController.text, 
+                      sector: _sectorController.text, 
+                      applicant: _applicantController.text
+                    ),
+                  );
+                  Navigator.of(context).pop();  
+                },
+                child: const Text('Comfirmar') 
               )
             ],
           )

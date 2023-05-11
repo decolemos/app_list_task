@@ -47,13 +47,15 @@ class TaskController extends ChangeNotifier {
     int index = _list.indexWhere((task) => updatedTask.number == task.number);
     //acessando o index da lista e igualando ele as novas informações
     _list[index] = updatedTask;
+    notifyListeners();
   }
   //DELETE = Criando uma função para deletar algo da lista
   //Passando como parametro uma variavel do tipo Task
   delete(Task removedTask) {
     //criando uma variavel index e igualando a lista acessando o index e fazendo uma verificação do index
-    int index = _list.indexWhere((task) => removedTask.number == task.number);
+    int index = _list.indexWhere((task) => removedTask.id == task.id);
     //acessando a lista e usando uma metodo de list para remover pelo index
     _list.removeAt(index);
+    notifyListeners();
   }
 }
